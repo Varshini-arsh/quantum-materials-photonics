@@ -59,9 +59,24 @@ py -3.14 -m pip install -r requirements.txt
 No IBM Quantum account or real hardware access is required — everything above runs
 on local simulators (Qiskit's `StatevectorEstimator`/Aer, Perceval's SLOS backend).
 
-## Next step
+## Follow-on project
 
-Extend part 2 to reproduce/extend arXiv:2608.09509 ("Gate-based emulation of boson
-sampling using photonic qubits") — cross-validate a gate-based emulation circuit
-against this project's native Perceval boson-sampling simulation, then scale beyond
-the paper's 4-mode demo.
+Part 2 above was extended into a separate project reproducing and cross-validating
+arXiv:2608.09509 ("Gate-based emulation of boson sampling using photonic qubits",
+IISc Bengaluru) — see the `boson-sampling-gate-emulation` repo. That project
+implemented the paper's approach, found and documented a real physics limitation
+in it via cross-validation, fixed it with a verified-correct alternative
+construction, and extended the paper's 4-mode demonstration to N=5 and N=6 modes.
+
+## IBM Quantum account status
+
+An IBM Quantum Platform account and API key exist for this work
+(`va12.sk2024@gmail.com`), created during this project but **not fully activated** —
+IBM requires a credit card for identity verification to provision a compute
+instance (debit cards were not accepted), which wasn't available at the time.
+Nothing in either project currently depends on this; both run entirely on local
+simulators. See the `boson-sampling-gate-emulation` repo's README
+("Future directions") for what real-hardware access would be used for if this
+gets resolved later (a genuine cross-platform validation: the original boson-sampling
+paper used photonic-qubit hardware, running the same construction on IBM's
+superconducting hardware would be a new comparison point).
