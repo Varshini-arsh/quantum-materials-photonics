@@ -1,0 +1,8 @@
+qiskit==2.5.2
+qiskit-algorithms==0.4.0
+qiskit-aer==0.17.2
+qiskit-ibm-runtime==0.49.0
+perceval-quandela==1.2.4
+numpy==2.5.2
+scipy==1.18.0
+matplotlib==3.11.1
