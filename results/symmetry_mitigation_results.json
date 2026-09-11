@@ -1,0 +1,17 @@
+{
+  "exact_energy": -6.464101615137757,
+  "mesh": {
+    "noiseless_energy": -6.327272925920809,
+    "noisy_raw_energy": -5.092570058127603,
+    "survival_probability": 0.825046341418894,
+    "noisy_mitigated_energy": -5.885300283183462,
+    "error_unmitigated": 1.3715315570101536,
+    "error_mitigated": 0.5788013319542946
+  },
+  "efficient_su2_comparison": {
+    "survival_probability": 0.23891756557140398,
+    "noisy_raw_energy": -0.1250477263193302,
+    "noisy_mitigated_energy": -0.8555557152261776,
+    "note": "arbitrary (non-VQE-optimal) parameter point, illustrative only"
+  }
+}

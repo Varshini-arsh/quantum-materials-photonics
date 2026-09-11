@@ -1,6 +1,6 @@
 # QMD Fellowship Project — Quantum Materials & Photonic Devices
 
-Three-part demonstration built for the QuantaRiSE Quantum Winter Fellowship application.
+Four-part demonstration built for the QuantaRiSE Quantum Winter Fellowship application.
 
 ## 1. `vqe_materials_heisenberg.py` — Quantum materials simulation
 
@@ -91,9 +91,47 @@ Results: `results/mesh_vqe_results.json`
 Plots: `results/mesh_vs_standard_ansatze.png`, `results/symmetry_conservation.png`,
 `results/mesh_convergence.png`
 
+## 4. `mesh_symmetry_mitigation.py` — Closing the loop: fixing the noise-fragility
+
+Part 3 found that the mesh ansatz's accuracy advantage collapses under noise
+because depolarizing noise breaks the exact Hamming-weight symmetry the
+ansatz relies on. This script fixes that using the same symmetry structure
+that caused the problem, rather than abandoning the ansatz design.
+
+**Method (standard symmetry verification):** measure the number operator
+(= a projector onto the correct Hamming-weight subspace), discard the part
+of the state outside it, and compute the energy on the renormalized
+survivor: `rho_mitigated = P·rho·P / Tr(P·rho·P)`. Implemented exactly via
+Qiskit Aer's density-matrix simulator (not noisy shot sampling with basis
+rotations, which would conflate the energy-measurement basis with the
+Hamming-weight-check basis and risk a subtle bug) — this computes exactly
+what infinite-shot symmetry verification converges to.
+
+**Result**, using the exact same optimized parameters from part 3's
+noiseless VQE run:
+
+| | \|energy error\| vs. exact |
+|---|---|
+| Noiseless | 0.137 |
+| Noisy, unmitigated | 1.372 |
+| Noisy, symmetry-mitigated | **0.579 — 57.8% of the unmitigated error removed** |
+
+82.5% of the noisy state's probability mass was still in the correct
+symmetry sector — the mitigation recovers a clean, sizeable fraction of the
+lost accuracy just from that. (A quick side comparison: applying the same
+mitigation to an arbitrary EfficientSU2 state gives only 23.9% survival
+probability, since that ansatz was never confined to the sector in the
+first place — so the technique is specifically effective *because* of the
+mesh ansatz's design, not a generic trick that helps any circuit equally.)
+
+Run: `py -3.14 mesh_symmetry_mitigation.py` (run part 3 first — this script
+loads its optimized parameters)
+Results: `results/symmetry_mitigation_results.json`
+Plot: `results/symmetry_mitigation.png`
+
 ## Environment
 
-All three scripts run under **Python 3.14** (`py -3.14`). Install pinned dependencies with:
+All four scripts run under **Python 3.14** (`py -3.14`). Install pinned dependencies with:
 ```
 py -3.14 -m pip install -r requirements.txt
 ```
