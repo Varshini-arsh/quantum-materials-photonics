@@ -2,7 +2,7 @@
 Photonic Realization of the Quantum Fourier Transform via a Reck Interferometer Mesh
 =====================================================================================
 
-Part 2 of the QMD Fellowship project. Bridges gate-model quantum computing
+Part 2 of this project. Bridges gate-model quantum computing
 (Qiskit) and linear-optical photonic quantum computing (Perceval):
 
   1. Take the same N-point Quantum Fourier Transform used in this project's

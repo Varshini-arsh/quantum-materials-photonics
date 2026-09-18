@@ -2,7 +2,7 @@
 VQE Ground-State Energy Estimation for a Heisenberg Spin Chain
 ================================================================
 
-Part 1 of the QMD Fellowship project: a quantum-materials simulation
+Part 1 of this project: a quantum-materials simulation
 demonstration. Estimates the ground-state energy of a 1D antiferromagnetic
 Heisenberg spin chain (a standard toy model for quantum magnetic materials)
 using the Variational Quantum Eigensolver.

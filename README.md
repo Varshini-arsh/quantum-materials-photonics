@@ -1,6 +1,6 @@
-# QMD Fellowship Project — Quantum Materials & Photonic Devices
+# Quantum Materials & Photonic Devices
 
-Four-part demonstration built for the QuantaRiSE Quantum Winter Fellowship application.
+Four-part demonstration spanning quantum materials simulation and photonic quantum computing.
 
 ## 1. `vqe_materials_heisenberg.py` — Quantum materials simulation
 
